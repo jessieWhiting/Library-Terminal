@@ -113,11 +113,11 @@ namespace Library_Terminal
                 {
                     bookListByAuthor.Add(books.Title);
                 }
-                else
-                {
-                    Console.WriteLine("Sorry, we do not have a book by that Author");
-                    break;
-                }
+                
+            }
+            if (bookListByAuthor.Count==0)
+            {
+                Console.WriteLine("Sorry, we do not have a book by that Author");
             }
             return bookListByAuthor;
             
@@ -158,7 +158,8 @@ namespace Library_Terminal
                 if (userInput == "author")
                 {
                     Console.WriteLine("Searching by author!");
-
+                    List<string> authors = new List<string>(SearchByAuthor());
+                    PickFromList(authors);
                     break;
                 }
                 else if (userInput == "title")
@@ -227,11 +228,6 @@ namespace Library_Terminal
             Console.WriteLine($"You have chosen {configuredList[userAnswer - 1]} ");
             return configuredList[userAnswer - 1];
         }
-
-
-    
-
-
 
     }
 }
