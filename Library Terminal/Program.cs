@@ -21,9 +21,9 @@ namespace Library_Terminal
                 CheckOutAnother = ContinueLoop("Rent another book?");
                 Console.WriteLine("=================================================================================");
             }
-
+            //Date and time here:
             Console.WriteLine("=================================================================================");
-            Console.WriteLine("Thanks for keeping libraries alive. Now Shh.");
+            Console.WriteLine("Thanks for keeping libraries alive. You book is due two weeks from now. Now Shh.");
             Console.WriteLine("=================================================================================");
         }
 
@@ -34,7 +34,7 @@ namespace Library_Terminal
             {
                 return true;
             }
-            else if (response.ToUpper() == "Y")
+            else if (response.ToUpper() == "N")
             {
                 return false;
             }
