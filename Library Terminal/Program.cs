@@ -3,27 +3,20 @@ using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Library_Terminal
 {
-     public class Program
+    public class Program
     {
         static void Main()
         {
-        
-          
 
             Library lib = new Library();
             /////////////////////////////////////////////////////////////////////////////
-           
-            bool CheckOutAnother = true;
-            Console.WriteLine("Library: ");
-
-            while (CheckOutAnother)
+            while (true)
             {
-                 Book checkOut = lib.Checkout();
-                 lib.PrintBooks();
-
-                Console.WriteLine("=================================================================================");
-                CheckOutAnother = ContinueLoop("Rent another book?");
-                Console.WriteLine("=================================================================================");
+                lib.HowShouldWeSearch();
+                if (ContinueLoop("Rent another book? Y/N") == false)
+                {
+                    break;
+                }
             }
             //Date and time here:
             Console.WriteLine("=================================================================================");
@@ -54,8 +47,6 @@ namespace Library_Terminal
             Console.Write(prompt);
             string output = Console.ReadLine();
 
-            Library lib = new Library();
-            lib.HowShouldWeSearch();
 
             return output;
         }
