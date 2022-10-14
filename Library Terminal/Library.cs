@@ -5,13 +5,14 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Library_Terminal
 {
     public class Library
     {
         public List<Book> Books { get; set; } = new List<Book>();
-       
+
         public Book DavidCopperField = new Book("David Copper Field", "Charles Dickens", "Available");
         public Book THWOD = new Book("The Hilarious world of Depression", "John Moe", "Is Checked out");
         public Book GrumpyMonkey = new Book("Grumpy Monkey", "Suzanne Lang", "Available");
@@ -42,17 +43,21 @@ namespace Library_Terminal
 
         public void PrintBooks()
         {
+            Console.WriteLine("=================================================================================");
+            Console.WriteLine("Library: ");
+            Console.WriteLine("=================================================================================");
             Books.OrderBy(Book => Book.Title).ToList();
             for (int i = 0; i < Books.Count; i++)
             {
                 Console.WriteLine($"{i + 1}: {Books.OrderBy(Book => Book.Title).ToList()[i].Title}");
-              
+
             }
+            Console.WriteLine("=================================================================================");
 
         }
 
 
-        public Book Checkout() 
+        public Book Checkout()
         {
             Console.WriteLine("==================================================================================================================");
             Console.WriteLine("Select a Book: ");
@@ -73,11 +78,11 @@ namespace Library_Terminal
 
                         if (b.IsCheckedOut.Contains("Available"))
                         {
-                        Console.WriteLine("==================================================================================================================");
-                        Console.WriteLine($"Checking out " + b.Title);
-                        Console.WriteLine("==================================================================================================================");
+                            Console.WriteLine("==================================================================================================================");
+                            Console.WriteLine($"Checking out " + b.Title);
+                            Console.WriteLine("==================================================================================================================");
 
-                        return b;                       
+                            return b;
 
                         }
                         else
@@ -92,7 +97,7 @@ namespace Library_Terminal
                         continue;
                     }
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     Console.WriteLine($"Please choose a valid book selection. 1 to {Books.Count}");
                     continue;
@@ -106,51 +111,52 @@ namespace Library_Terminal
 
             Console.WriteLine("What Author would you like to select?");
             string author = Console.ReadLine();
-            
+
             foreach (Book books in Books)
             {
-                if (books.Author.Contains(author))
+                if (books.Author.Contains(author) && books.IsCheckedOut.Contains("Available"))
                 {
                     bookListByAuthor.Add(books.Title);
                 }
-                
+
             }
-            if (bookListByAuthor.Count==0)
+            if (bookListByAuthor.Count == 0)
             {
                 Console.WriteLine("Sorry, we do not have a book by that Author");
             }
             return bookListByAuthor;
-            
+
         }
         public void ReturnBook()
         {
             Console.WriteLine("What book would you like to return?");
             string input = Console.ReadLine();
 
-            foreach(Book book in Books)
+            foreach (Book book in Books)
             {
-                if (book.Title.Contains(input))
+                if (book.Title.Contains(input) && book.IsCheckedOut.Contains("Available"))
                 {
-                    Console.WriteLine("Thank you");
+                    Console.WriteLine("Sorry, That is not one of our books");
+                    break;
                 }
                 else
                 {
-                    Console.WriteLine("Sorry, That is not one of our books");
+                    Console.WriteLine("Thank you");
                     break;
                 }
 
 
             }
-          
 
-        }  
+
+        }
 
 
         public void HowShouldWeSearch()
         {
             while (true)
             {
-                Console.WriteLine("Would you like to search by Author or Title?");
+                Console.WriteLine("Would you like to search by Author or Title? Or use the letter N to continue");
                 Console.WriteLine("( Please note, we have inputed searching by keyword into our Library system! )");
 
                 string userInput = Console.ReadLine().ToLower();
@@ -169,6 +175,13 @@ namespace Library_Terminal
                     PickFromList(keywords);
                     break;
                 }
+                else if (userInput == "n")
+                {
+                    PrintBooks();
+                    break;
+
+
+                }
                 else
                 {
                     Console.WriteLine("Hmmm, I'm not sure what you mean by that. Could you try it again?");
@@ -186,20 +199,50 @@ namespace Library_Terminal
             Console.WriteLine("Please input a title or keyword that you would like to search for");
             string userInput = Console.ReadLine();
             List<string> configuredKeywordList = new List<string>();
-            
+
             foreach (Book book in Books)
             {
-                if (book.Title.Contains(userInput))
+                if (book.Title.Contains(userInput) && book.IsCheckedOut.Contains("Available"))
                 {
                     configuredKeywordList.Add(book.Title);
                 }
             }
+
+            for (int i = 0; i < configuredKeywordList.Count; i++)
+            {
+                Book b = Books.Where(x => x.IsCheckedOut == "Available").First();
+
+            }
+
+
+
+
             return configuredKeywordList;
         }
 
 
-        public string PickFromList(List<string> configuredList) 
+        public string PickFromList(List<string> configuredList)
         {
+            for (int i = 0; i < configuredList.Count; i++)
+            {
+
+
+
+
+            }
+
+
+
+            //foreach(Book book in Books)
+            //{
+            //    if()
+
+            //    Console.WriteLine(book.IsCheckedOut);
+
+
+            //}
+
+
             int x = 0;
             Console.WriteLine($"Please pick a number from the list below!");
             Console.WriteLine("====================================================");
@@ -225,7 +268,7 @@ namespace Library_Terminal
 
             }
             Console.WriteLine("");
-            Console.WriteLine($"You have chosen {configuredList[userAnswer - 1]} ");
+            Console.WriteLine($"You have checked out {configuredList[userAnswer - 1]}!");
             return configuredList[userAnswer - 1];
         }
 

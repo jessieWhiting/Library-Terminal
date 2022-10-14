@@ -10,7 +10,7 @@ namespace Library_Terminal
     {
         public string Title { get; set; }
         public string Author { get; set; }
-        public string IsCheckedOut { get; set; }  
+        public string IsCheckedOut { get; set; }
 
 
         public Book(string Title, string Author, string IsCheckedOut)
@@ -20,7 +20,7 @@ namespace Library_Terminal
             this.IsCheckedOut = IsCheckedOut;
         }
 
-        
+
 
 
 
