@@ -6,6 +6,11 @@ namespace Library_Terminal
     {
         static void Main()
         {
+
+            
+       
+        
+
             Library lib = new Library();
             /////////////////////////////////////////////////////////////////////////////
            
@@ -50,6 +55,7 @@ namespace Library_Terminal
             Console.Write(prompt);
             string output = Console.ReadLine();
             return output;
+
         }
     }
 }
