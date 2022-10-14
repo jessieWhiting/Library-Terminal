@@ -57,6 +57,7 @@ namespace Library_Terminal
             Library lib = new Library();
             lib.HowShouldWeSearch();
 
+            return output;
         }
     }
 }
