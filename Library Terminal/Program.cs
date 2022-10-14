@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography.X509Certificates;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Library_Terminal
 {
@@ -6,7 +7,10 @@ namespace Library_Terminal
     {
         static void Main()
         {
-            
+            Library lib = new Library();
+            lib.HowShouldWeSearch();
+
+
         }
     }
 }
