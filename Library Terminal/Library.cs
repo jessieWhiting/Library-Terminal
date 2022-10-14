@@ -10,7 +10,7 @@ namespace Library_Terminal
     public class Library
     {
         public List<Book> Books { get; set; } = new List<Book>();
-
+       
         public Book DavidCopperField = new Book("David Copper Field", "Charles Dickens", true);
         public Book THWOD = new Book("The Hilarious world of Depression", "John Moe", true);
         public Book GrumpyMonkey = new Book("Grumpy Monkey", "Suzanne Lang", true);
@@ -49,8 +49,51 @@ namespace Library_Terminal
             Books.OrderBy(Book => Book.Title).ToList();
             for (int i = 0; i < Books.Count; i++)
             {
-                Console.WriteLine($"{i}: {Books.OrderBy(Book => Book.Title).ToList()[i].Title}");
+                Console.WriteLine($"{i + 1}: {Books.OrderBy(Book => Book.Title).ToList()[i].Title}");
+              
             }
+
+        }
+
+        public Book Checkout() 
+        {
+            Console.WriteLine("==================================================================================================================");
+            Console.WriteLine("Select a Book: ");
+            Console.WriteLine("==================================================================================================================");
+            PrintBooks();
+            bool outbook = true;
+            Book b;
+            while (outbook)
+            {
+                try
+                {
+                    int userInput = int.Parse(Console.ReadLine());
+
+                    if (userInput > 0 && userInput < Books.Count + 1)
+                    {
+                      
+
+                        b = Books.OrderBy(Book => Book.Title).ToList()[userInput - 1]; 
+                        Console.WriteLine("==================================================================================================================");
+                        Console.WriteLine($"Checking out " + b.Title);
+                        Console.WriteLine("==================================================================================================================");
+                        
+                        return b;
+
+                    }
+                    else
+                    {
+                        Console.WriteLine($"That is not a valid book to checkout. 1 to {Books.Count }");
+                        continue;
+                    }
+                }
+                catch(Exception)
+                {
+                    Console.WriteLine($"Please choose a valid book selection. 1 to {Books.Count}");
+                    continue;
+                }
+            }
+            return Checkout();
         }
 
         
