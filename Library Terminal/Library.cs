@@ -37,11 +37,8 @@ namespace Library_Terminal
             Books.Add(DarkMatter);
             Books.Add(FireAndBlood);
             Books.Add(LiarsKey);
-                
 
-      
-                
-           
+
         }
 
         public void PrintBooks()
@@ -52,9 +49,51 @@ namespace Library_Terminal
                 Console.WriteLine($"{i}: {Books.OrderBy(Book => Book.Title).ToList()[i].Title}");
             }
         }
+        public List<string> SearchByAuthor()
+        {
+            List<string> bookListByAuthor = new List<string>();
 
-        
+            Console.WriteLine("What Author would you like to select?");
+            string author = Console.ReadLine();
+            
+            foreach (Book books in Books)
+            {
+                if (books.Author.Contains(author))
+                {
+                    bookListByAuthor.Add(books.Title);
+                }
+                else
+                {
+                    Console.WriteLine("Sorry, we do not have a book by that Author");
+                    break;
+                }
+            }
+            return bookListByAuthor;
+            
+        }
+        public void ReturnBook()
+        {
+            Console.WriteLine("What book would you like to return?");
+            string input = Console.ReadLine();
+
+            foreach(Book book in Books)
+            {
+                if (book.Title.Contains(input))
+                {
+                    Console.WriteLine("Thank you");
+                }
+                else
+                {
+                    Console.WriteLine("Sorry, That is not one of our books");
+                    break;
+                }
+
+
+            }
+          
+
+        }  
     }
-
-   
 }
+
+

@@ -7,6 +7,11 @@ namespace Library_Terminal
         static void Main()
         {
             
+         Library lib = new Library();
+
+            lib.SearchByAuthor();
+            lib.ReturnBook();
+        
         }
     }
 }
