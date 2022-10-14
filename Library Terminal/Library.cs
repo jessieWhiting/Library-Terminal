@@ -10,19 +10,19 @@ namespace Library_Terminal
     public class Library
     {
         public List<Book> Books { get; set; } = new List<Book>();
-
-        public Book DavidCopperField = new Book("David Copper Field", "Charles Dickens", true);
-        public Book THWOD = new Book("The Hilarious world of Depression", "John Moe", true);
-        public Book GrumpyMonkey = new Book("Grumpy Monkey", "Suzanne Lang", true);
-        public Book Eragon = new Book("Eragon", "Christopher Paolini", true);
-        public Book FairyTale = new Book("Fairy Tale", "Stephen King", true);
-        public Book TheHobbit = new Book("The Hobbit", "J.R.R Tolkein", false);
-        public Book ThePostmortal = new Book("The Postmortal", "Drew Magary", true);
-        public Book TheVagrant = new Book("The Vagrant", "Peter Newman", true);
-        public Book DarkMatter = new Book("Dark Matter", "Blake Crouch", true);
-        public Book TheGoldenCompass = new Book("The Golden Compass", "Phillip Pullman", false);
-        public Book FireAndBlood = new Book("Fire & Blood", "George R.R Martin", true);
-        public Book LiarsKey = new Book("Liars Key", " Mark Lawrence", false);
+       
+        public Book DavidCopperField = new Book("David Copper Field", "Charles Dickens", "Available");
+        public Book THWOD = new Book("The Hilarious world of Depression", "John Moe", "Is Checked out");
+        public Book GrumpyMonkey = new Book("Grumpy Monkey", "Suzanne Lang", "Available");
+        public Book Eragon = new Book("Eragon", "Christopher Paolini", "Available");
+        public Book FairyTale = new Book("Fairy Tale", "Stephen King", "Available");
+        public Book TheHobbit = new Book("The Hobbit", "J.R.R Tolkein", "Is Checked out");
+        public Book ThePostmortal = new Book("The Postmortal", "Drew Magary", "Available");
+        public Book TheVagrant = new Book("The Vagrant", "Peter Newman", "Available");
+        public Book DarkMatter = new Book("Dark Matter", "Blake Crouch", "Available");
+        public Book TheGoldenCompass = new Book("The Golden Compass", "Phillip Pullman", "Is Checked out");
+        public Book FireAndBlood = new Book("Fire & Blood", "George R.R Martin", "Available");
+        public Book LiarsKey = new Book("Liars Key", " Mark Lawrence", "Is Checked out");
 
         public Library()
         {
@@ -46,8 +46,59 @@ namespace Library_Terminal
             Books.OrderBy(Book => Book.Title).ToList();
             for (int i = 0; i < Books.Count; i++)
             {
-                Console.WriteLine($"{i}: {Books.OrderBy(Book => Book.Title).ToList()[i].Title}");
+                Console.WriteLine($"{i + 1}: {Books.OrderBy(Book => Book.Title).ToList()[i].Title}");
+              
             }
+
+        }
+
+        public Book Checkout() 
+        {
+            Console.WriteLine("==================================================================================================================");
+            Console.WriteLine("Select a Book: ");
+            Console.WriteLine("==================================================================================================================");
+            PrintBooks();
+            bool outbook = true;
+            Book b;
+            while (outbook)
+            {
+                try
+                {
+                    int userInput = int.Parse(Console.ReadLine());
+
+                    if (userInput > 0 && userInput < Books.Count + 1)
+                    {
+
+                        b = Books.OrderBy(Book => Book.Title).ToList()[userInput - 1];
+
+                        if (b.IsCheckedOut.Contains("Available"))
+                        {
+                        Console.WriteLine("==================================================================================================================");
+                        Console.WriteLine($"Checking out " + b.Title);
+                        Console.WriteLine("==================================================================================================================");
+
+                        return b;                       
+
+                        }
+                        else
+                        {
+                            Console.WriteLine("This book has already been checked out.");
+                            Checkout();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"That is not a valid book to checkout. 1 to {Books.Count}");
+                        continue;
+                    }
+                }
+                catch(Exception)
+                {
+                    Console.WriteLine($"Please choose a valid book selection. 1 to {Books.Count}");
+                    continue;
+                }
+            }
+            return Checkout();
         }
         public List<string> SearchByAuthor()
         {

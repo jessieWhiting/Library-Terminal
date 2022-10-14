@@ -10,10 +10,10 @@ namespace Library_Terminal
     {
         public string Title { get; set; }
         public string Author { get; set; }
-        public bool IsCheckedOut { get; set; } = false;
+        public string IsCheckedOut { get; set; }  
 
 
-        public Book(string Title, string Author, bool IsCheckedOut)
+        public Book(string Title, string Author, string IsCheckedOut)
         {
             this.Title = Title;
             this.Author = Author;
