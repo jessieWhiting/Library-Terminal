@@ -158,13 +158,6 @@ namespace Library_Terminal
                
                 return bookListByAuthor;
         }
-        public void ReturnBook()
-        {
-            Console.WriteLine("What book would you like to return?");
-            string input = Console.ReadLine();
-
-            Console.WriteLine($"Thank you for returning {input}"); 
-        }
 
 
         public void HowShouldWeSearch()
