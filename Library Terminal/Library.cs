@@ -148,6 +148,9 @@ namespace Library_Terminal
         {
             while (true)
             {
+                Console.WriteLine("=================================================================================");
+                Console.WriteLine("Welcome to: The Library of Misfit Books: \n");
+                Console.WriteLine("=================================================================================");
                 Console.WriteLine("Would you like to search by Author or Title? Or use the letter N to continue");
                 Console.WriteLine("( Please note, we have inputed searching by keyword into our Library system! )");
 
