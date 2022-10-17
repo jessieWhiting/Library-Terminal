@@ -96,6 +96,7 @@ namespace Library_Terminal
 
                         if (b.IsCheckedOut.Contains("Available"))
                         {
+                            b.IsCheckedOut ="Is Checked Out";
 
                             Console.WriteLine("==================================================================================================================");
                             Console.WriteLine($"Checking out " + b.Title);
@@ -284,19 +285,22 @@ namespace Library_Terminal
                 }
             }
 
-                if (configuredList.Contains("Available"))
-                {
-                  Console.WriteLine("");
-                  Console.WriteLine($"You have checked out {configuredList[userAnswer - 1]}!");
-                    
-                }
-                else
-                {
-                 Console.WriteLine($"Returned: {configuredList[userAnswer -1]}.");
-                }
+            if (configuredList.Contains("Available"))
+            {
+                Console.WriteLine("");
+                Console.WriteLine($"You have checked out {configuredList[userAnswer - 1]}!");
+
+            }
+            else
+            {
+                Console.WriteLine($"Returned: {configuredList[userAnswer - 1]}.");
+               // configuredList[userAnswer - 1].IsCheckedOut = "Available";
+            }
+
             
 
-            return configuredList[userAnswer - 1];
+
+                return configuredList[userAnswer - 1];
 
         }
 
