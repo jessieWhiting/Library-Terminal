@@ -112,35 +112,44 @@ namespace Library_Terminal
             List<string> bookListByAuthor = new List<string>();
 
             Console.WriteLine("What Author would you like to select?");
-            string author = Console.ReadLine();
+            
+                string author = Console.ReadLine();
 
-            foreach (Book books in Books)
-            {
-                if (books.Author.Contains(author) && books.IsCheckedOut.Contains("Available"))
+                if (author.Length == 0)
                 {
-                    bookListByAuthor.Add(books.Title);
+                    Console.WriteLine(" ");
+                }
+                else if (author.Length == 1)
+                {
+                    char.ToUpper(author[0]);
+                }
+                else
+                {
+                    author = char.ToUpper(author[0]) + author.Substring(1);
                 }
 
-            }
-            if (bookListByAuthor.Count == 0)
-            {
-                Console.WriteLine("Sorry, we do not have a book by that Author");
-            }
-            return bookListByAuthor;
+                foreach (Book books in Books)
+                {
+                    if (books.Author.Contains(author) && books.IsCheckedOut.Contains("Available"))
+                    {
+                        bookListByAuthor.Add(books.Title);
+                    }
 
+                }
+                if (bookListByAuthor.Count == 0)
+                {
+                    Console.WriteLine("Sorry, we do not have a book by that Author");
+                    SearchByAuthor();
+                }
+               
+                return bookListByAuthor;
         }
         public void ReturnBook()
         {
             Console.WriteLine("What book would you like to return?");
             string input = Console.ReadLine();
 
-     
             Console.WriteLine($"Thank you for returning {input}"); 
-
-
-
-
-
         }
 
 
