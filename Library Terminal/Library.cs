@@ -1,10 +1,12 @@
 ﻿using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static System.Reflection.Metadata.BlobBuilder;
 
@@ -15,24 +17,24 @@ namespace Library_Terminal
         public List<Book> Books { get; set; } = new List<Book>();
 
         public Book DavidCopperField = new Book("David Copper Field", "Charles Dickens", "Available");
-        public Book THWOD = new Book("The Hilarious world of Depression", "John Moe", "Is Checked out");
+        public Book THWOD = new Book("The Hilarious world of Depression", "John Moe", "Is Checked Out");
         public Book GrumpyMonkey = new Book("Grumpy Monkey", "Suzanne Lang", "Available");
         public Book Eragon = new Book("Eragon", "Christopher Paolini", "Available");
         public Book FairyTale = new Book("Fairy Tale", "Stephen King", "Available");
-        public Book TheHobbit = new Book("The Hobbit", "J.R.R Tolkein", "Is Checked out");
+        public Book TheHobbit = new Book("The Hobbit", "J.R.R Tolkein", "Available");
         public Book ThePostmortal = new Book("The Postmortal", "Drew Magary", "Available");
         public Book TheVagrant = new Book("The Vagrant", "Peter Newman", "Available");
         public Book DarkMatter = new Book("Dark Matter", "Blake Crouch", "Available");
-        public Book TheGoldenCompass = new Book("The Golden Compass", "Phillip Pullman", "Is Checked out");
+        public Book TheGoldenCompass = new Book("The Golden Compass", "Phillip Pullman", "Is Checked Out");
         public Book FireAndBlood = new Book("Fire & Blood", "George R.R Martin", "Available");
-        public Book LiarsKey = new Book("Liars Key", " Mark Lawrence", "Is Checked out");
-        public Book EncyclopediaBrown = new Book("Encyclopedia Brwon", "Donald Sobol", "Available");
+        public Book LiarsKey = new Book("Liars Key", " Mark Lawrence", "Is Checked Out");
+        public Book EncyclopediaBrown = new Book("Encyclopedia Brown", "Donald Sobol", "Available");
         public Book TBIAF = new Book("This Book Is Fake", "Jessie Whiting", "Available");
-        public Book IFT = new Book("It's a Fake Too", "Brandon Leatherman", "Available");
-        public Book FakeyFakey = new Book("Fakey Fakey", "Liam Donelson", "Is Checked out");
+        public Book IFT = new Book("Still a Fake", "Brandon Leatherman", "Available");
+        public Book FakeyFakey = new Book("Fakey Fakey", "Liam Donelson", "Is Checked Out");
         public Book MysteriousBook = new Book("A Mysterious Book Appears", "Liam Donelson", "Available");
-        public Book OhLookABook = new Book("Oh Look a Book", " Brandon Leatherman", "Is Checked out");
-        public Book CanIEatThis = new Book(" Can I eat this? ", "Jessie Whiting", "Is Checked out");
+        public Book OhLookABook = new Book("Oh Look a Book", " Brandon Leatherman", "Is Checked Out");
+        public Book CanIEatThis = new Book("Can I eat this? ", "Jessie Whiting", "Is Checked Out");
 
         public Library()
         {
@@ -95,7 +97,7 @@ namespace Library_Terminal
                         {
 
                         Console.WriteLine("==================================================================================================================");
-                        Console.WriteLine($"Checking out " + b.Title); ReturnDate();
+                        Console.WriteLine($"Checking out " + b.Title); 
                         Console.WriteLine("==================================================================================================================");
 
                             return b;
@@ -127,29 +129,18 @@ namespace Library_Terminal
 
             Console.WriteLine("What Author would you like to select?");
             
-                string author = Console.ReadLine();
+                string authorSelection = Console.ReadLine();
+                string author = UpperCaseWord(authorSelection);
+      
+               foreach (Book book in Books)
+               {
 
-                if (author.Length == 0)
-                {
-                    Console.WriteLine(" ");
-                }
-                else if (author.Length == 1)
-                {
-                    char.ToUpper(author[0]);
-                }
-                else
-                {
-                    author = char.ToUpper(author[0]) + author.Substring(1);
-                }
+                 if (book.Author.Contains(author) && book.IsCheckedOut.Contains("Available"))
+                 {
+                     bookListByAuthor.Add(book.Title);
+                 }
 
-                foreach (Book books in Books)
-                {
-                    if (books.Author.Contains(author) && books.IsCheckedOut.Contains("Available"))
-                    {
-                        bookListByAuthor.Add(books.Title);
-                    }
-
-                }
+               }
                 if (bookListByAuthor.Count == 0)
                 {
                     Console.WriteLine("Sorry, we do not have a book by that Author");
@@ -159,6 +150,12 @@ namespace Library_Terminal
                 return bookListByAuthor;
         }
 
+        public string UpperCaseWord(string input)
+        {
+            TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+            string upperCaseSentence = textInfo.ToTitleCase(input);
+            return upperCaseSentence;
+        }
 
         public void HowShouldWeSearch()
         {
@@ -202,6 +199,7 @@ namespace Library_Terminal
 
             }
         }
+       
 
         public void ReturnDate()
         {
@@ -213,7 +211,9 @@ namespace Library_Terminal
         public List<string> SearchByKeyword()
         {
             Console.WriteLine("Please input a title or keyword that you would like to search for");
-            string userInput = Console.ReadLine();
+            string input = Console.ReadLine();
+            string userInput = UpperCaseWord(input);
+            
             List<string> configuredKeywordList = new List<string>();
 
             foreach (Book book in Books)
@@ -229,9 +229,6 @@ namespace Library_Terminal
                 Book b = Books.Where(x => x.IsCheckedOut == "Available").First();
 
             }
-
-
-
 
             return configuredKeywordList;
         }
