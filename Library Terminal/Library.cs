@@ -154,6 +154,7 @@ namespace Library_Terminal
         }
         public List<string> ReturnBook()
         {
+            
             Console.WriteLine("Select a book to return.");
             List<string> bookToReturn = new List<string>();
 
@@ -260,7 +261,7 @@ namespace Library_Terminal
 
         public string PickFromList(List<string> configuredList)
         {
-
+            Book c;
             int x = 0;
             Console.WriteLine($"Please select a number from the list below!");
             Console.WriteLine("====================================================");
@@ -294,19 +295,21 @@ namespace Library_Terminal
             else
             {
                 Console.WriteLine($"Returned: {configuredList[userAnswer - 1]}.");
-               // configuredList[userAnswer - 1].IsCheckedOut = "Available";
+
+                foreach(Book book in Books)
+                {
+                    if (book.Title == configuredList[userAnswer - 1])
+                    {
+                        book.IsCheckedOut = "Available";
+                    }
+
+                }
             }
-
-            
-
-
                 return configuredList[userAnswer - 1];
-
         }
 
         public List<Book> ReadFile()
         {
-
             string filePath = @"..\..\..\books.txt";
             StreamReader reader = new StreamReader(filePath);
             string textDump = reader.ReadToEnd();

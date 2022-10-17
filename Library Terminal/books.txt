@@ -1,7 +1,7 @@
 David Copper Field,Charles Dickens,Available
-The Hilarious world of Depression,John Moe,Is Checked Out
+The Hilarious world of Depression,John Moe,Available
 Grumpy Monkey,Suzanne Lang,Available
-Eragon,Christopher Paolini,Is Checked Out
+Eragon,Christopher Paolini,Available
 Fairy Tale,Stephen King,Available
 The Hobbit,J.R.R Tolkein,Available
 The Postmortal,Drew Magary,Available
@@ -15,4 +15,4 @@ Still a Fake,Brandon Leatherman,Available
 Fakey Fakey,Liam Donelson,Is Checked Out
 A Mysterious Book Appears,Liam Donelson,Available
 Oh Look a Book, Brandon Leatherman,Is Checked Out
-Can I eat this? ,Jessie Whiting,Is Checked Out
+Can I eat this? ,Jessie Whiting,Available
