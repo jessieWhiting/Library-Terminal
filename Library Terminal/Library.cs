@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -78,9 +79,10 @@ namespace Library_Terminal
 
                         if (b.IsCheckedOut.Contains("Available"))
                         {
-                            Console.WriteLine("==================================================================================================================");
-                            Console.WriteLine($"Checking out " + b.Title);
-                            Console.WriteLine("==================================================================================================================");
+
+                        Console.WriteLine("==================================================================================================================");
+                        Console.WriteLine($"Checking out " + b.Title); ReturnDate();
+                        Console.WriteLine("==================================================================================================================");
 
                             return b;
 
@@ -132,21 +134,11 @@ namespace Library_Terminal
             Console.WriteLine("What book would you like to return?");
             string input = Console.ReadLine();
 
-            foreach (Book book in Books)
-            {
-                if (book.Title.Contains(input) && book.IsCheckedOut.Contains("Available"))
-                {
-                    Console.WriteLine("Sorry, That is not one of our books");
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Thank you");
-                    break;
-                }
+     
+            Console.WriteLine($"Thank you for returning {input}"); 
 
 
-            }
+
 
 
         }
@@ -192,7 +184,12 @@ namespace Library_Terminal
             }
         }
 
-
+        public void ReturnDate()
+        {
+            DateTime today = DateTime.Today;
+            today = today.AddDays(12);
+            Console.WriteLine("This book is due back : " + today.ToString("d"));
+        }
 
         public List<string> SearchByKeyword()
         {
