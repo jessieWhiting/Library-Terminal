@@ -105,7 +105,9 @@ namespace Library_Terminal
                         }
                         else
                         {
-                            Console.WriteLine("This book has already been checked out.");
+
+                            Console.WriteLine($"This book has already been checked out. 1 to {Books.Count}");
+
                             continue;
                         }
                     }
@@ -151,7 +153,7 @@ namespace Library_Terminal
         }
         public List<string> ReturnBook()
         {
-            Console.WriteLine("Please input the book you'd like to return");
+            Console.WriteLine("Select a book to return.");
             List<string> bookToReturn = new List<string>();
 
             foreach (Book book in Books)
@@ -179,28 +181,27 @@ namespace Library_Terminal
                 Console.WriteLine("=================================================================================");
                 Console.WriteLine("Welcome to: The Library of Misfit Books: \n");
                 Console.WriteLine("=================================================================================");
-                Console.WriteLine("Would you like to search by Author or Title? Or use the letter N to continue");
-                Console.WriteLine("( Please note, we have inputed searching by keyword into our Library system! )");
-                Console.WriteLine("Enter |return| to view list of return books");
+                Console.WriteLine("(Please note, we have inputed searching by keyword into our Library system!)");
+                Console.WriteLine("Enter |N| to view collection:\nEnter |Return| to return a book. \nType |Author| or |Title| for key searching.");
 
 
                 string userInput = Console.ReadLine().ToLower();
 
-                if (userInput == "author")
+                if (userInput == "author" || userInput == "A")
                 {
                     Console.WriteLine("Searching by author!");
                     List<string> authors = new List<string>(SearchByAuthor());
                     PickFromList(authors);
                     break;
                 }
-                else if (userInput == "title")
+                else if (userInput == "title" || userInput == "t")
                 {
                     Console.WriteLine("Searching by Title");
                     List<string> keywords = new List<string>(SearchByKeyword());
                     PickFromList(keywords);
                     break;
                 }
-                else if (userInput == "return")
+                else if (userInput == "return" || userInput == "r" )
                 {
                     Console.WriteLine("Returning book");
                     List<string> checkedOut = new List<string>(ReturnBook());
@@ -212,19 +213,16 @@ namespace Library_Terminal
                 {
                     Checkout();
                     break;
-
-
                 }
                 else
                 {
                     Console.WriteLine("Hmmm, I'm not sure what you mean by that. Could you try it again?");
-                    Console.WriteLine($"Remember please answer with either Author or Title");
+                    Console.WriteLine($"Enter |N| to view collection:\nEnter |Return| to return a book.\nType |Author| or |Title| for key searching.");
                     continue;
                 }
 
             }
         }
-
 
         public void ReturnDate()
         {
@@ -263,7 +261,7 @@ namespace Library_Terminal
         {
 
             int x = 0;
-            Console.WriteLine($"Please pick a number from the list below!");
+            Console.WriteLine($"Please select a number from the list below!");
             Console.WriteLine("====================================================");
             foreach (string keyword in configuredList)
             {
@@ -284,13 +282,21 @@ namespace Library_Terminal
                     Console.WriteLine($"Please input the valid number of the book you would like to checkout! 1 - {x}");
                     continue;
                 }
-
             }
 
-            
-            Console.WriteLine("");
-            Console.WriteLine($"You have checked out {configuredList[userAnswer - 1]}!");
+                if (configuredList.Contains("Available"))
+                {
+                  Console.WriteLine("");
+                  Console.WriteLine($"You have checked out {configuredList[userAnswer - 1]}!");
+                    
+                }
+            else
+            {
+                Console.WriteLine($"Returned: {configuredList[userAnswer -1]}.");
+            }
+
             return configuredList[userAnswer - 1];
+
         }
 
         public List<Book> ReadFile()
