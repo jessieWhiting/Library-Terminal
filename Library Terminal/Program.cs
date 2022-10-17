@@ -21,7 +21,7 @@ namespace Library_Terminal
             }
 
             //Date and time here:
-            lib.ReturnBook();
+            lib.ReturnDate();
             Console.WriteLine("=================================================================================");
             Console.WriteLine("Thanks for keeping libraries alive. You book is due two weeks from now. Now Shh.");
             Console.WriteLine("=================================================================================");
