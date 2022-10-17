@@ -1,11 +1,11 @@
 David Copper Field,Charles Dickens,Available
 The Hilarious world of Depression,John Moe,Is Checked Out
 Grumpy Monkey,Suzanne Lang,Available
-Eragon,Christopher Paolini,Available
+Eragon,Christopher Paolini,Is Checked Out
 Fairy Tale,Stephen King,Available
 The Hobbit,J.R.R Tolkein,Available
 The Postmortal,Drew Magary,Available
-The Vagrant,Peter Newman,Available
+The Vagrant,Peter Newman,Is Checked Out
 Dark Matter,Blake Crouch,Available
 Fire & Blood,George R.R Martin,Available
 Liars Key, Mark Lawrence,Is Checked Out
