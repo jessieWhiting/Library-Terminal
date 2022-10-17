@@ -149,13 +149,21 @@ namespace Library_Terminal
                
                 return bookListByAuthor;
         }
-        public void ReturnBook()
+        public List<string> ReturnBook()
         {
-            Console.WriteLine("What book would you like to return?");
-            string input = Console.ReadLine();
+            Console.WriteLine("Please input the book you'd like to return");
+            List<string> bookToReturn = new List<string>();
 
-            Console.WriteLine($"Thank you for returning {input}"); 
+            foreach (Book book in Books)
+            {
+                if (book.IsCheckedOut == "Is Checked Out")
+                {
+                    bookToReturn.Add(book.Title);
+                }
+            }
+            return bookToReturn;
         }
+
 
         public string UpperCaseWord(string input)
         {
@@ -173,6 +181,8 @@ namespace Library_Terminal
                 Console.WriteLine("=================================================================================");
                 Console.WriteLine("Would you like to search by Author or Title? Or use the letter N to continue");
                 Console.WriteLine("( Please note, we have inputed searching by keyword into our Library system! )");
+                Console.WriteLine("Enter |return| to view list of return books");
+
 
                 string userInput = Console.ReadLine().ToLower();
 
@@ -189,6 +199,14 @@ namespace Library_Terminal
                     List<string> keywords = new List<string>(SearchByKeyword());
                     PickFromList(keywords);
                     break;
+                }
+                else if (userInput == "return")
+                {
+                    Console.WriteLine("Returning book");
+                    List<string> checkedOut = new List<string>(ReturnBook());
+                    PickFromList(checkedOut);
+                    break;
+
                 }
                 else if (userInput == "n")
                 {
