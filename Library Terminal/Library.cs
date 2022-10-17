@@ -26,6 +26,13 @@ namespace Library_Terminal
         public Book TheGoldenCompass = new Book("The Golden Compass", "Phillip Pullman", "Is Checked out");
         public Book FireAndBlood = new Book("Fire & Blood", "George R.R Martin", "Available");
         public Book LiarsKey = new Book("Liars Key", " Mark Lawrence", "Is Checked out");
+        public Book EncyclopediaBrown = new Book("Encyclopedia Brwon", "Donald Sobol", "Available");
+        public Book TBIAF = new Book("This Book Is Fake", "Jessie Whiting", "Available");
+        public Book IFT = new Book("It's a Fake Too", "Brandon Leatherman", "Available");
+        public Book FakeyFakey = new Book("Fakey Fakey", "Liam Donelson", "Is Checked out");
+        public Book MysteriousBook = new Book("A Mysterious Book Appears", "Liam Donelson", "Available");
+        public Book OhLookABook = new Book("Oh Look a Book", " Brandon Leatherman", "Is Checked out");
+        public Book CanIEatThis = new Book(" Can I eat this? ", "Jessie Whiting", "Is Checked out");
 
         public Library()
         {
@@ -40,6 +47,13 @@ namespace Library_Terminal
             Books.Add(DarkMatter);
             Books.Add(FireAndBlood);
             Books.Add(LiarsKey);
+            Books.Add(EncyclopediaBrown);
+            Books.Add(TBIAF);
+            Books.Add(IFT);
+            Books.Add(FakeyFakey);
+            Books.Add (MysteriousBook);
+            Books.Add(OhLookABook);
+            Books.Add(CanIEatThis);
         }
 
         public void PrintBooks()
@@ -112,35 +126,44 @@ namespace Library_Terminal
             List<string> bookListByAuthor = new List<string>();
 
             Console.WriteLine("What Author would you like to select?");
-            string author = Console.ReadLine();
+            
+                string author = Console.ReadLine();
 
-            foreach (Book books in Books)
-            {
-                if (books.Author.Contains(author) && books.IsCheckedOut.Contains("Available"))
+                if (author.Length == 0)
                 {
-                    bookListByAuthor.Add(books.Title);
+                    Console.WriteLine(" ");
+                }
+                else if (author.Length == 1)
+                {
+                    char.ToUpper(author[0]);
+                }
+                else
+                {
+                    author = char.ToUpper(author[0]) + author.Substring(1);
                 }
 
-            }
-            if (bookListByAuthor.Count == 0)
-            {
-                Console.WriteLine("Sorry, we do not have a book by that Author");
-            }
-            return bookListByAuthor;
+                foreach (Book books in Books)
+                {
+                    if (books.Author.Contains(author) && books.IsCheckedOut.Contains("Available"))
+                    {
+                        bookListByAuthor.Add(books.Title);
+                    }
 
+                }
+                if (bookListByAuthor.Count == 0)
+                {
+                    Console.WriteLine("Sorry, we do not have a book by that Author");
+                    SearchByAuthor();
+                }
+               
+                return bookListByAuthor;
         }
         public void ReturnBook()
         {
             Console.WriteLine("What book would you like to return?");
             string input = Console.ReadLine();
 
-     
             Console.WriteLine($"Thank you for returning {input}"); 
-
-
-
-
-
         }
 
 
@@ -172,7 +195,7 @@ namespace Library_Terminal
                 }
                 else if (userInput == "n")
                 {
-                    PrintBooks();
+                    Checkout();
                     break;
 
 
@@ -230,18 +253,6 @@ namespace Library_Terminal
 
 
             }
-
-
-
-            //foreach(Book book in Books)
-            //{
-            //    if()
-
-            //    Console.WriteLine(book.IsCheckedOut);
-
-
-            //}
-
 
             int x = 0;
             Console.WriteLine($"Please pick a number from the list below!");
