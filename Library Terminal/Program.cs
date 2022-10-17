@@ -19,11 +19,13 @@ namespace Library_Terminal
                     break;
                 }
             }
+
             //Date and time here:
             lib.ReturnBook();
             Console.WriteLine("=================================================================================");
             Console.WriteLine("Thanks for keeping libraries alive. You book is due two weeks from now. Now Shh.");
             Console.WriteLine("=================================================================================");
+
         }
 
         public static bool ContinueLoop(string question)
