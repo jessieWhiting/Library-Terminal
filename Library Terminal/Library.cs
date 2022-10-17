@@ -15,7 +15,6 @@ namespace Library_Terminal
     public class Library
     {
         public List<Book> Books { get; set; } = new List<Book>();
-
         //public Book DavidCopperField = new Book("David Copper Field", "Charles Dickens", "Available");
         //public Book THWOD = new Book("The Hilarious world of Depression", "John Moe", "Is Checked Out");
         //public Book GrumpyMonkey = new Book("Grumpy Monkey", "Suzanne Lang", "Available");
@@ -73,7 +72,6 @@ namespace Library_Terminal
             Console.WriteLine("=================================================================================");
 
         }
-
 
         public Book Checkout()
         {
@@ -167,7 +165,6 @@ namespace Library_Terminal
             }
             return bookToReturn;
         }
-
 
         public string UpperCaseWord(string input)
         {
@@ -285,26 +282,27 @@ namespace Library_Terminal
                     continue;
                 }
             }
-
-            if (configuredList.Contains("Available"))
-            {
+            // using the object, we search the full list for books that are avaiable, then we use the configured list to display the books. 
+            // This way we are able to use their elements 
+           
+         
                 Console.WriteLine("");
-                Console.WriteLine($"You have checked out {configuredList[userAnswer - 1]}!");
 
-            }
-            else
-            {
-                Console.WriteLine($"Returned: {configuredList[userAnswer - 1]}.");
-
-                foreach(Book book in Books)
+                foreach (Book book in Books)
                 {
-                    if (book.Title == configuredList[userAnswer - 1])
+                    if (book.Title == configuredList[userAnswer - 1] && book.IsCheckedOut == "Available")
                     {
-                        book.IsCheckedOut = "Available";
+                    Console.WriteLine($"You have checked out {configuredList[userAnswer - 1]}!");
+                    book.IsCheckedOut = "Is Checked Out";
+                    }
+                    else if (book.Title == configuredList[userAnswer - 1])
+                    {
+                    Console.WriteLine($"You have returned {configuredList[userAnswer-1]}!");
+                    book.IsCheckedOut = "Available";
                     }
 
                 }
-            }
+
                 return configuredList[userAnswer - 1];
         }
 
@@ -326,7 +324,6 @@ namespace Library_Terminal
             return myLib;
         }
 
-
         public void WriteFile() {
 
             string filePath = @"..\..\..\books.txt";
@@ -344,14 +341,6 @@ namespace Library_Terminal
             streamWriter.Close();
 
         }
-
-
-
-
-
-
-
-
 
 
     }
