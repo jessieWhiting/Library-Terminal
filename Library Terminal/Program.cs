@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using Microsoft.VisualBasic;
+using System.Security.Cryptography.X509Certificates;
 using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Library_Terminal
@@ -19,6 +20,7 @@ namespace Library_Terminal
                 }
             }
             //Date and time here:
+            lib.ReturnDate();
             Console.WriteLine("=================================================================================");
             Console.WriteLine("Thanks for keeping libraries alive. You book is due two weeks from now. Now Shh.");
             Console.WriteLine("=================================================================================");
