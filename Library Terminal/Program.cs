@@ -27,6 +27,8 @@ namespace Library_Terminal
             Console.WriteLine("Thanks for keeping libraries alive. You book is due two weeks from now. Now Shh.");
             Console.WriteLine("=================================================================================");
 
+            lib.WriteFile();
+
         }
 
         public static bool ContinueLoop(string question)
@@ -55,5 +57,8 @@ namespace Library_Terminal
 
             return output;
         }
+
+
+
     }
 }
