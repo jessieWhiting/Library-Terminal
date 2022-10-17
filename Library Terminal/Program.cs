@@ -13,6 +13,7 @@ namespace Library_Terminal
             /////////////////////////////////////////////////////////////////////////////
             while (true)
             {
+                
                 lib.HowShouldWeSearch();
                 if (ContinueLoop("Rent another book? Y/N") == false)
                 {
