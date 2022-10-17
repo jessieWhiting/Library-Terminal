@@ -15,7 +15,7 @@ namespace Library_Terminal
     public class Library
     {
         public List<Book> Books { get; set; } = new List<Book>();
-        
+
         //public Book DavidCopperField = new Book("David Copper Field", "Charles Dickens", "Available");
         //public Book THWOD = new Book("The Hilarious world of Depression", "John Moe", "Is Checked Out");
         //public Book GrumpyMonkey = new Book("Grumpy Monkey", "Suzanne Lang", "Available");
@@ -106,7 +106,7 @@ namespace Library_Terminal
                         else
                         {
 
-                            Console.WriteLine($"This book has already been checked out. 1 to {Books.Count}");
+                            Console.WriteLine($"This book has already been checked out. Select from 1 to {Books.Count}");
 
                             continue;
                         }
@@ -203,7 +203,7 @@ namespace Library_Terminal
                 }
                 else if (userInput == "return" || userInput == "r" )
                 {
-                    Console.WriteLine("Returning book");
+                    
                     List<string> checkedOut = new List<string>(ReturnBook());
                     PickFromList(checkedOut);
                     break;
@@ -290,10 +290,11 @@ namespace Library_Terminal
                   Console.WriteLine($"You have checked out {configuredList[userAnswer - 1]}!");
                     
                 }
-            else
-            {
-                Console.WriteLine($"Returned: {configuredList[userAnswer -1]}.");
-            }
+                else
+                {
+                 Console.WriteLine($"Returned: {configuredList[userAnswer -1]}.");
+                }
+            
 
             return configuredList[userAnswer - 1];
 
