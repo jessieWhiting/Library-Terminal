@@ -20,10 +20,6 @@ namespace Library_Terminal
             this.IsCheckedOut = IsCheckedOut;
         }
 
-
-
-
-
     }
     public enum Reads
     {
