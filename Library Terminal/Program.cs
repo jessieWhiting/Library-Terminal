@@ -32,7 +32,7 @@ namespace Library_Terminal
             lib.WriteFile();
 
         }
-
+        //Method to continue
         public static bool ContinueLoop(string question)
         {
             string response = GetInput(question);
@@ -50,7 +50,7 @@ namespace Library_Terminal
                 return ContinueLoop(question);
             }
         }
-        //Methof for getting user input
+        //Method for getting user input
         public static string GetInput(string prompt)
         {
             Console.Write(prompt);

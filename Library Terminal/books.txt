@@ -1,4 +1,4 @@
-David Copper Field,Charles Dickens,Available
+David Copper Field,Charles Dickens,Is Checked Out
 The Hilarious world of Depression,John Moe,Available
 Grumpy Monkey,Suzanne Lang,Available
 Eragon,Christopher Paolini,Available
@@ -9,7 +9,7 @@ The Vagrant,Peter Newman,Is Checked Out
 Dark Matter,Blake Crouch,Is Checked Out
 Fire & Blood,George R.R Martin,Available
 Liars Key, Mark Lawrence,Is Checked Out
-Encyclopedia Brown,Donald Sobol,Available
+Encyclopedia Brown,Donald Sobol,Is Checked Out
 This Book Is Fake,Jessie Whiting,Is Checked Out
 Still a Fake,Brandon Leatherman,Available
 Fakey Fakey,Liam Donelson,Is Checked Out

@@ -59,7 +59,7 @@ namespace Library_Terminal
             //Books.Add(OhLookABook);
             //Books.Add(CanIEatThis);
         }
-
+        //Method for creating list of books
         public void PrintBooks()
         {
             Console.WriteLine("=================================================================================");
@@ -74,8 +74,7 @@ namespace Library_Terminal
             Console.WriteLine("=================================================================================");
 
         }
-
-
+        //Method for checking a book out.
         public Book Checkout()
         {
             Console.WriteLine("==================================================================================================================");
@@ -127,32 +126,40 @@ namespace Library_Terminal
             }
             return Checkout();
         }
+        //Author Search
         public List<string> SearchByAuthor()
         {
             List<string> bookListByAuthor = new List<string>();
-
-            Console.WriteLine("What Author would you like to select?");
-
-            string authorSelection = Console.ReadLine();
-            string author = UpperCaseWord(authorSelection);
-
-            foreach (Book book in Books)
+            while (true)
             {
 
-                if (book.Author.Contains(author) && book.IsCheckedOut.Contains("Available"))
+
+
+                Console.WriteLine("What Author would you like to select?");
+
+                string authorSelection = Console.ReadLine();
+                string author = UpperCaseWord(authorSelection);
+
+                foreach (Book book in Books)
                 {
-                    bookListByAuthor.Add(book.Title);
+
+                    if (book.Author.Contains(author) && book.IsCheckedOut.Contains("Available"))
+                    {
+                        bookListByAuthor.Add(book.Title);
+                        
+                    }
+
+                }
+                if (bookListByAuthor.Count < 1)
+                {
+                    Console.WriteLine("Sorry, we do not have a book by that Author");
+                    continue;
                 }
 
+                return bookListByAuthor;
             }
-            if (bookListByAuthor.Count == 0)
-            {
-                Console.WriteLine("Sorry, we do not have a book by that Author");
-                SearchByAuthor();
-            }
-
-            return bookListByAuthor;
         }
+        //Method for returning a book to the library
         public List<string> ReturnBook()
         {
             
@@ -170,14 +177,14 @@ namespace Library_Terminal
             return bookToReturn;
         }
 
-
+        //Method for taking in proper casing
         public string UpperCaseWord(string input)
         {
             TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
             string upperCaseSentence = textInfo.ToTitleCase(input);
             return upperCaseSentence;
         }
-
+        //Method for instancing type of search
         public void HowShouldWeSearch()
         {
             while (true)
@@ -191,7 +198,7 @@ namespace Library_Terminal
 
                 string userInput = Console.ReadLine().ToLower();
 
-                if (userInput == "author" || userInput == "A")
+                if (userInput == "author" || userInput == "a")
                 {
                     Console.WriteLine("Searching by author!");
                     List<string> authors = new List<string>(SearchByAuthor());
@@ -227,40 +234,41 @@ namespace Library_Terminal
 
             }
         }
+        //Method for instancing return date 12 days from 
 
         public void ReturnDate()
         {
             DateTime today = DateTime.Today;
             today = today.AddDays(12);
-            Console.WriteLine("Your book(s) are : " + today.ToString("d"));
+            Console.WriteLine("Your book(s) are due: " + today.ToString("d"));
         }
-
-        public List<string> SearchByKeyword()
-        {
-            Console.WriteLine("Please input a title or keyword that you would like to search for");
-            string input = Console.ReadLine();
-            string userInput = UpperCaseWord(input);
-
-            List<string> configuredKeywordList = new List<string>();
-
-            foreach (Book book in Books)
+       
+        //Method for searching keyword in title
+            public List<string> SearchByKeyword()
             {
-                if (book.Title.Contains(userInput) && book.IsCheckedOut.Contains("Available"))
+                List<string> configuredKeywordList = new List<string>();
+                while (true)
                 {
-                    configuredKeywordList.Add(book.Title);
+                    Console.WriteLine("Please input a title or keyword that you would like to search for");
+                    string input = Console.ReadLine();
+                    string userInput = UpperCaseWord(input);
+                    foreach (Book book in Books)
+                    {
+                        if (book.Title.Contains(userInput) && book.IsCheckedOut.Contains("Available"))
+                        {
+                            configuredKeywordList.Add(book.Title);
+                        }
+                    }
+                    if (configuredKeywordList.Count < 1)
+                    {
+                        Console.WriteLine("Sorry, we do not have a book by that keyword");
+                        continue;
+                    }
+                    return configuredKeywordList;
                 }
             }
-
-            for (int i = 0; i < configuredKeywordList.Count; i++)
-            {
-                Book b = Books.Where(x => x.IsCheckedOut == "Available").First();
-
-            }
-
-            return configuredKeywordList;
-        }
-
-
+        
+        //Method for specified list
         public string PickFromList(List<string> configuredList)
         {
             Book c;
@@ -288,28 +296,26 @@ namespace Library_Terminal
                 }
             }
 
-            if (configuredList.Contains("Available"))
+            foreach (Book book in Books)
             {
-                Console.WriteLine("");
-                Console.WriteLine($"You have checked out {configuredList[userAnswer - 1]}!");
-
-            }
-            else
-            {
-                Console.WriteLine($"Returned: {configuredList[userAnswer - 1]}.");
-
-                foreach(Book book in Books)
+                if (book.Title == configuredList[userAnswer - 1])
                 {
-                    if (book.Title == configuredList[userAnswer - 1])
+                    if (book.IsCheckedOut == "Available\r" || book.IsCheckedOut == "Available")
                     {
+                        Console.WriteLine($"You have checked out {configuredList[userAnswer - 1]}!");
+                        book.IsCheckedOut = "Is Checked Out";
+                    }
+                    else if (book.IsCheckedOut == "Is Checked Out\r" || book.IsCheckedOut == "Is Checked Out")
+                    {
+                        Console.WriteLine($"Returned: {configuredList[userAnswer - 1]}.");
                         book.IsCheckedOut = "Available";
                     }
-
                 }
             }
-                return configuredList[userAnswer - 1];
+            return configuredList[userAnswer - 1];
         }
-
+      
+        //File IO Methods x2
         public List<Book> ReadFile()
         {
             string filePath = @"..\..\..\books.txt";
@@ -327,8 +333,6 @@ namespace Library_Terminal
             reader.Close();
             return myLib;
         }
-
-
         public void WriteFile() {
 
             string filePath = @"..\..\..\books.txt";
@@ -346,16 +350,6 @@ namespace Library_Terminal
             streamWriter.Close();
 
         }
-
-
-
-
-
-
-
-
-
-
     }
 }
 
