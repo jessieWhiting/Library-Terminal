@@ -1,18 +1,18 @@
-David Copper Field,Charles Dickens,Is Checked Out
+David Copper Field,Charles Dickens,Available
 The Hilarious world of Depression,John Moe,Available
 Grumpy Monkey,Suzanne Lang,Available
 Eragon,Christopher Paolini,Available
 Fairy Tale,Stephen King,Available
 The Hobbit,J.R.R Tolkein,Available
 The Postmortal,Drew Magary,Available
-The Vagrant,Peter Newman,Is Checked Out
-Dark Matter,Blake Crouch,Is Checked Out
+The Vagrant,Peter Newman,Available
+Dark Matter,Blake Crouch,Available
 Fire & Blood,George R.R Martin,Available
-Liars Key, Mark Lawrence,Is Checked Out
-Encyclopedia Brown,Donald Sobol,Is Checked Out
-This Book Is Fake,Jessie Whiting,Is Checked Out
+Liars Key, Mark Lawrence,Available
+Encyclopedia Brown,Donald Sobol,Available
+This Book Is Fake,Jessie Whiting,Available
 Still a Fake,Brandon Leatherman,Available
-Fakey Fakey,Liam Donelson,Is Checked Out
+Fakey Fakey,Liam Donelson,Available
 A Mysterious Book Appears,Liam Donelson,Available
 Oh Look a Book, Brandon Leatherman,Available
 Can I eat this? ,Jessie Whiting,Available
