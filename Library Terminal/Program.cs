@@ -14,6 +14,7 @@ namespace Library_Terminal
             /////////////////////////////////////////////////////////////////////////////
             while (true)
             {
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 
                 lib.HowShouldWeSearch();
                 if (ContinueLoop("Rent another book? Y/N") == false)
