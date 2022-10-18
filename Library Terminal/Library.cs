@@ -129,6 +129,7 @@ namespace Library_Terminal
         //Author Search
         public List<string> SearchByAuthor()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             List<string> bookListByAuthor = new List<string>();
             while (true)
             {
@@ -238,6 +239,7 @@ namespace Library_Terminal
 
         public void ReturnDate()
         {
+           
             DateTime today = DateTime.Today;
             today = today.AddDays(12);
             Console.WriteLine("Your book(s) are due: " + today.ToString("d"));
@@ -249,6 +251,7 @@ namespace Library_Terminal
                 List<string> configuredKeywordList = new List<string>();
                 while (true)
                 {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.WriteLine("Please input a title or keyword that you would like to search for");
                     string input = Console.ReadLine();
                     string userInput = UpperCaseWord(input);

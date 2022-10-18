@@ -9,27 +9,34 @@ namespace Library_Terminal
     {
         static void Main()
         {
-
+            Console.ResetColor();
             Library lib = new Library();
             /////////////////////////////////////////////////////////////////////////////
             while (true)
             {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+
                 lib.HowShouldWeSearch();
-                if (ContinueLoop("Rent another book? Y/N") == false)
+                Console.ResetColor();
+                Console.ForegroundColor= ConsoleColor.Green;    
+                if (ContinueLoop("Would you like to return to the menu? Y/N ") == false)
                 {
                     break;
-                }
+                } 
+                Console.ResetColor();
             }
-
+            
             //Date and time here:
+            Console.ForegroundColor = ConsoleColor.Red;
             lib.ReturnDate();
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("=================================================================================");
-            Console.WriteLine("Thanks for keeping libraries alive. You book is due two weeks from now. Now Shh.");
+            Console.WriteLine($"Thanks for keeping libraries alive. Your book is due two weeks from now. Now Shh.");
             Console.WriteLine("=================================================================================");
             Console.WriteLine("Press any key to save data.");
-
+            Console.ResetColor();
             lib.WriteFile();
 
         }
