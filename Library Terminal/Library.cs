@@ -193,7 +193,7 @@ namespace Library_Terminal
                 Console.WriteLine("=================================================================================");
                 Console.WriteLine("Welcome to: The Library of Misfit Books: \n");
                 Console.WriteLine("=================================================================================");
-                Console.WriteLine("(Please note, we have inputed searching by keyword into our Library system!)");
+                Console.WriteLine("(Please note, we have input searching by keyword into our Library system!)");
                 Console.WriteLine("Enter |N| to view collection:\nEnter |Return| to return a book. \nType |Author| or |Title| for key searching.");
 
 

@@ -14,7 +14,9 @@ namespace Library_Terminal
             /////////////////////////////////////////////////////////////////////////////
             while (true)
             {
+
                 Console.ForegroundColor = ConsoleColor.Blue;
+
                 lib.HowShouldWeSearch();
                 Console.ResetColor();
                 Console.ForegroundColor= ConsoleColor.Green;    
