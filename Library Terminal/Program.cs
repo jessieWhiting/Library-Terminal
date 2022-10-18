@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic;
 using System.Security.Cryptography.X509Certificates;
 using static System.Reflection.Metadata.BlobBuilder;
+using System.IO;
 
 namespace Library_Terminal
 {
@@ -26,6 +27,7 @@ namespace Library_Terminal
             Console.WriteLine("=================================================================================");
             Console.WriteLine("Thanks for keeping libraries alive. You book is due two weeks from now. Now Shh.");
             Console.WriteLine("=================================================================================");
+            Console.WriteLine("Press any key to save data.");
 
             lib.WriteFile();
 

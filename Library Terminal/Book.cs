@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Library_Terminal
 {
@@ -21,8 +22,5 @@ namespace Library_Terminal
         }
 
     }
-    public enum Reads
-    {
-        //Not sure yet, Thinking titles.
-    }
 }
+    

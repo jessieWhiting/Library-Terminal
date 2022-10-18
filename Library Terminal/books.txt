@@ -6,13 +6,13 @@ Fairy Tale,Stephen King,Available
 The Hobbit,J.R.R Tolkein,Available
 The Postmortal,Drew Magary,Available
 The Vagrant,Peter Newman,Is Checked Out
-Dark Matter,Blake Crouch,Available
+Dark Matter,Blake Crouch,Is Checked Out
 Fire & Blood,George R.R Martin,Available
 Liars Key, Mark Lawrence,Is Checked Out
 Encyclopedia Brown,Donald Sobol,Available
-This Book Is Fake,Jessie Whiting,Available
+This Book Is Fake,Jessie Whiting,Is Checked Out
 Still a Fake,Brandon Leatherman,Available
 Fakey Fakey,Liam Donelson,Is Checked Out
 A Mysterious Book Appears,Liam Donelson,Available
-Oh Look a Book, Brandon Leatherman,Is Checked Out
+Oh Look a Book, Brandon Leatherman,Available
 Can I eat this? ,Jessie Whiting,Available

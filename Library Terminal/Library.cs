@@ -8,6 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.IO;
 using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Library_Terminal
@@ -160,9 +161,10 @@ namespace Library_Terminal
 
             foreach (Book book in Books)
             {
-                if (book.IsCheckedOut == "Is Checked Out")
+                if (book.IsCheckedOut.Trim() == "Is Checked Out")
                 {
                     bookToReturn.Add(book.Title);
+
                 }
             }
             return bookToReturn;
@@ -230,7 +232,7 @@ namespace Library_Terminal
         {
             DateTime today = DateTime.Today;
             today = today.AddDays(12);
-            Console.WriteLine("This book is due back : " + today.ToString("d"));
+            Console.WriteLine("Your book(s) are : " + today.ToString("d"));
         }
 
         public List<string> SearchByKeyword()
