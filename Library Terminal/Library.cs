@@ -217,7 +217,7 @@ namespace Library_Terminal
                 {
                     
                     List<string> checkedOut = new List<string>(ReturnBook());
-                    if (checkedOut.Count > 0)
+                    if (checkedOut.Count < 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Red; 
                         Console.WriteLine("There are no books to return.");
@@ -247,7 +247,7 @@ namespace Library_Terminal
         {
            
             DateTime today = DateTime.Today;
-            today = today.AddDays(12);
+            today = today.AddDays(14);
             Console.WriteLine("Your book(s) are due: " + today.ToString("d"));
         }
        
