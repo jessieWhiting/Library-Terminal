@@ -217,8 +217,14 @@ namespace Library_Terminal
                 {
                     
                     List<string> checkedOut = new List<string>(ReturnBook());
-                    PickFromList(checkedOut);
+                    if (checkedOut.Count > 0)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red; 
+                        Console.WriteLine("There are no books to return.");
+                        Console.ResetColor();
                     break;
+                    }
+                    PickFromList(checkedOut);
 
                 }
                 else if (userInput == "n")

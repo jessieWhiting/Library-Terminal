@@ -5,7 +5,7 @@ Eragon,Christopher Paolini,Available
 Fairy Tale,Stephen King,Available
 The Hobbit,J.R.R Tolkein,Available
 The Postmortal,Drew Magary,Available
-The Vagrant,Peter Newman,Available
+The Vagrant,Peter Newman,Is Checked Out
 Dark Matter,Blake Crouch,Available
 Fire & Blood,George R.R Martin,Available
 Liars Key, Mark Lawrence,Available
@@ -13,6 +13,6 @@ Encyclopedia Brown,Donald Sobol,Available
 This Book Is Fake,Jessie Whiting,Available
 Still a Fake,Brandon Leatherman,Available
 Fakey Fakey,Liam Donelson,Available
-A Mysterious Book Appears,Liam Donelson,Available
-Oh Look a Book, Brandon Leatherman,Available
+A Mysterious Book Appears,Liam Donelson,Is Checked Out
+Oh Look a Book, Brandon Leatherman,Is Checked Out
 Can I eat this? ,Jessie Whiting,Available
